@@ -34,7 +34,6 @@ public class MancalaProducer implements Runnable {
             numPermutations++;
         }
         m_queue.close();
-        System.out.println("Added end token");
         System.out.println("Permutations: " + Integer.toString(numPermutations));
     }
 }
