@@ -1,14 +1,16 @@
-import ProducerConsumer.BoardEntry;
 import ProducerConsumer.MancalaConsumer;
 import ProducerConsumer.MancalaProducer;
 import ProducerConsumer.MancalaQueue;
 
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 /**
- * User: Chad
- * Date: 4/11/12
- * Time: 10:40 AM
+ * TODO javadocs
+ *
+ * @author Chad Zawistowski <crz8448@rit.edu>
  */
 public class Driver {
     static final int threadPoolSize = 3;
