@@ -11,7 +11,7 @@ class EmptyTheWarrens extends Card {
 
     public boolean tryCast(GameData g) {
         if (super.tryCast(g)) {
-            Game.g.graveyard.add(this);
+            Game.staticReferenceToGame.graveyard.add(this);
             return true;
         } else {
             return false;

@@ -13,7 +13,7 @@ class ElvishSpiritGuide extends Card {
     public boolean tryCast(GameData g) {
         if (super.tryCast(g)) {
             g.setGreen(g.getGreen() + 1);
-            Game.g.exile.add(this);
+            Game.staticReferenceToGame.exile.add(this);
             return true;
         } else {
             return false;

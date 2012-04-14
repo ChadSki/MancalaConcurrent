@@ -1,16 +1,16 @@
 package BelcherSim;
 
-public class Launcher {
+public class Launcher implements Runnable {
     // To do list:
     // Make Serum Powder work
     // Make optimization systematic.
 
-    public static void main(String[] args) {
+    public void run() {
         boolean testMode = false;
-        boolean showStatsInRealTime = true;
+        boolean showStatsInRealTime = false;
 
-        int winPercentage = 0;
-        int runNumber = 1000000; // 10000 is decent, but more is preferred.
+        int winCount = 0;
+        int runNumber = 10000; // 10000 is decent, but more is preferred.
 
         int belcherAvg = 0;
         int belcherFizzle = 0;
@@ -28,57 +28,57 @@ public class Launcher {
 
         // Run the program runNumber times and get the statistics.
         for (int i = 1; i <= runNumber; i++) {
-            Game.g = new Game();
+            Game.staticReferenceToGame = new Game();
 
             if (testMode) {
-                Game.g.visualize = true;
+                Game.staticReferenceToGame.visualize = true;
             }
 
             if (showStatsInRealTime) {
                 if ((i % 1000) == 0) {
-                    System.out.println("Win Percentage " + (((double) (winPercentage) * 100) / i) + "%");
+                    System.out.println("Win Percentage " + (((double) (winCount) * 100) / i) + "%");
                 }
             }
 
             if ((i % 2) == 0) {
-                if (Game.g.play(false)) {
-                    winPercentage++;
+                if (Game.staticReferenceToGame.play(false)) {
+                    winCount++;
                     drawCounter++;
 
-                    if (Game.g.belcherDamage == 0) {
+                    if (Game.staticReferenceToGame.belcherDamage == 0) {
                         stormCounter++;
-                        totalStormCount = totalStormCount + Game.g.gameData.getStormCount();
+                        totalStormCount = totalStormCount + Game.staticReferenceToGame.gameData.getStormCount();
                     }
                 }
             } else {
-                if (Game.g.play(true)) {
-                    winPercentage++;
+                if (Game.staticReferenceToGame.play(true)) {
+                    winCount++;
                     playCounter++;
 
-                    if (Game.g.belcherDamage == 0) {
+                    if (Game.staticReferenceToGame.belcherDamage == 0) {
                         stormCounter++;
-                        totalStormCount = totalStormCount + Game.g.gameData.getStormCount();
+                        totalStormCount = totalStormCount + Game.staticReferenceToGame.gameData.getStormCount();
                     }
                 }
             }
 
-            if (Game.g.belcherDamage > 0) {
+            if (Game.staticReferenceToGame.belcherDamage > 0) {
                 fizzleCounter++;
-                belcherAvg = belcherAvg + Game.g.belcherDamage;
-                if (Game.g.belcherDamage > 20) {
+                belcherAvg = belcherAvg + Game.staticReferenceToGame.belcherDamage;
+                if (Game.staticReferenceToGame.belcherDamage > 20) {
                     belcherFizzle++;
                 }
             }
-            Game.g = null;
+            Game.staticReferenceToGame = null;
         }
 
-        System.out.println(" ");
-        System.out.println("Final Win Percentage " + (((double) (winPercentage) * 100) / runNumber) + "%");
-        System.out.println("Play Win Percentage " + (((double) (playCounter) * 100) / (runNumber / 2)) + "%");
-        System.out.println("Draw Win Percentage " + (((double) (drawCounter) * 100) / (runNumber / 2)) + "%");
-        System.out.println(" ");
-        System.out.println("Average Belcher Damage " + (((double) (belcherAvg)) / (double) fizzleCounter));
-        System.out.println("Belcher Success Percentage " + (((double) (belcherFizzle) * 100) / (double) fizzleCounter) + "%");
-        System.out.println("Average Storm Count " + (((double) (totalStormCount)) / (double) stormCounter));
+        String winPercentage = "Win: " + (((double) (winCount) * 100) / runNumber) + "%";
+        System.out.println(winPercentage);
+
+        //System.out.println("Play Win Percentage " + (((double) (playCounter) * 100) / (runNumber / 2)) + "%");
+        //System.out.println("Draw Win Percentage " + (((double) (drawCounter) * 100) / (runNumber / 2)) + "%");
+        //System.out.println("Average Belcher Damage " + (((double) (belcherAvg)) / (double) fizzleCounter));
+        //System.out.println("Belcher Success Percentage " + (((double) (belcherFizzle) * 100) / (double) fizzleCounter) + "%");
+        //System.out.println("Average Storm Count " + (((double) (totalStormCount)) / (double) stormCounter));
     }
 }

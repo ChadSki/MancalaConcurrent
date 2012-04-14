@@ -21,20 +21,20 @@ class Manamorphose extends Card {
             if (color == "red") {
                 g.setRed(g.getRed() + 1);
                 g.setGreen(g.getGreen() + 1);
-                if (Game.g.visualize) {
+                if (Game.staticReferenceToGame.visualize) {
                     System.out.println("Add RG");
                 }
             } else if (color == "green") {
                 g.setGreen(g.getGreen() + 2);
-                if (Game.g.visualize) {
+                if (Game.staticReferenceToGame.visualize) {
                     System.out.println("Add GG");
                 }
             }
-            Game.g.draw(1);
-            if (Game.g.visualize) {
-                System.out.println("Draw: " + Game.g.hand.get(Game.g.hand.size() - 1).getName());
+            Game.staticReferenceToGame.draw(1);
+            if (Game.staticReferenceToGame.visualize) {
+                System.out.println("Draw: " + Game.staticReferenceToGame.hand.get(Game.staticReferenceToGame.hand.size() - 1).getName());
             }
-            Game.g.graveyard.add(this);
+            Game.staticReferenceToGame.graveyard.add(this);
             return true;
         } else {
             return false;

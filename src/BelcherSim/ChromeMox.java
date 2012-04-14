@@ -10,12 +10,12 @@ class ChromeMox extends Card {
     }
 
     public void imprint(int i) {
-        if (Game.g.visualize) {
-            System.out.println("Chrome Mox Imprinting " + Game.g.hand.get(i).getName());
+        if (Game.staticReferenceToGame.visualize) {
+            System.out.println("Chrome Mox Imprinting " + Game.staticReferenceToGame.hand.get(i).getName());
         }
         isImprinted = true;
-        Card c = Game.g.hand.get(i);
-        Game.g.exile.add(c);
+        Card c = Game.staticReferenceToGame.hand.get(i);
+        Game.staticReferenceToGame.exile.add(c);
 
         isImprinted = true;
     }
@@ -30,7 +30,7 @@ class ChromeMox extends Card {
                     g.setGreen(g.getGreen() + 1);
                 }
             }
-            Game.g.battlefield.add(this);
+            Game.staticReferenceToGame.battlefield.add(this);
             return true;
         } else {
             return false;

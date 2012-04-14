@@ -20,7 +20,7 @@ class LotusPetal extends Card {
                 g.setGreen(g.getGreen() + 1);
             }
 
-            Game.g.graveyard.add(this);
+            Game.staticReferenceToGame.graveyard.add(this);
             return true;
         } else {
             return false;

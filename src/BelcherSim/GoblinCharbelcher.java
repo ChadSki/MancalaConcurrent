@@ -10,26 +10,26 @@ class GoblinCharbelcher extends Card {
 
     public boolean tryCast(GameData g) {
         if (super.tryCast(g)) {
-            Game.g.battlefield.add(this);
+            Game.staticReferenceToGame.battlefield.add(this);
 
-            if (Game.g.visualize) {
+            if (Game.staticReferenceToGame.visualize) {
                 System.out.println("Activate Charbelcher...");
             }
 
-            for (int i = 0; i < Game.g.library.size(); i++) {
-                if (Game.g.library.get(i).isLand) {
-                    if (Game.g.visualize) {
+            for (int i = 0; i < Game.staticReferenceToGame.library.size(); i++) {
+                if (Game.staticReferenceToGame.library.get(i).isLand) {
+                    if (Game.staticReferenceToGame.visualize) {
                         System.out.println(i + " flips");
                         System.out.println("Deals " + (i * 2) + " damage");
                     }
-                    Game.g.belcherDamage = i * 2;
+                    Game.staticReferenceToGame.belcherDamage = i * 2;
                     break;
-                } else if (i == (Game.g.library.size() - 1)) {
-                    if (Game.g.visualize) {
+                } else if (i == (Game.staticReferenceToGame.library.size() - 1)) {
+                    if (Game.staticReferenceToGame.visualize) {
                         System.out.println(i + " flips");
                         System.out.println("Deals " + (i * 2) + " damage");
                     }
-                    Game.g.belcherDamage = i * 2;
+                    Game.staticReferenceToGame.belcherDamage = i * 2;
 
                 }
             }

@@ -78,7 +78,7 @@ public class Game {
     int probeNum = 0;
     int swNum = 0;
 
-    public static Game g;
+    public static Game staticReferenceToGame;
 
     public boolean play(boolean play) {
         // Put EtW in sideboard
@@ -411,9 +411,9 @@ public class Game {
                                 }
 
                                 if (i < j) {
-                                    Game.g.hand.remove(i);
+                                    Game.staticReferenceToGame.hand.remove(i);
                                 } else {
-                                    Game.g.hand.remove(i - 1);
+                                    Game.staticReferenceToGame.hand.remove(i - 1);
                                 }
 
                                 // Try running the rest of the game.
@@ -435,9 +435,9 @@ public class Game {
                             }
 
                             if (i < j) {
-                                Game.g.hand.remove(i);
+                                Game.staticReferenceToGame.hand.remove(i);
                             } else {
-                                Game.g.hand.remove(i - 1);
+                                Game.staticReferenceToGame.hand.remove(i - 1);
                             }
 
                             // Try running the rest of the game.

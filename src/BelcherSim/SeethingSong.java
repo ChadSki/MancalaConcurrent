@@ -14,7 +14,7 @@ class SeethingSong extends Card {
     public boolean tryCast(GameData g) {
         if (super.tryCast(g)) {
             g.setRed(g.getRed() + 5);
-            Game.g.graveyard.add(this);
+            Game.staticReferenceToGame.graveyard.add(this);
             return true;
         } else {
             return false;

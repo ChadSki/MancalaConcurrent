@@ -10,7 +10,7 @@ class LED extends Card {
 
     public boolean tryCast(GameData g) {
         if (super.tryCast(g)) {
-            Game.g.battlefield.add(this);
+            Game.staticReferenceToGame.battlefield.add(this);
             return true;
         } else {
             return false;
@@ -19,6 +19,6 @@ class LED extends Card {
 
     public void ability1(GameData g) {
         g.setRed(g.getRed() + 3);
-        Game.g.graveyard.add(this);
+        Game.staticReferenceToGame.graveyard.add(this);
     }
 }

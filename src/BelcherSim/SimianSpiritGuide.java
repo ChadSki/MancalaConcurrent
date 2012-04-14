@@ -12,7 +12,7 @@ class SimianSpiritGuide extends Card {
     public boolean tryCast(GameData g) {
         if (super.tryCast(g)) {
             g.setRed(g.getRed() + 1);
-            Game.g.exile.add(this);
+            Game.staticReferenceToGame.exile.add(this);
             return true;
         } else {
             return false;

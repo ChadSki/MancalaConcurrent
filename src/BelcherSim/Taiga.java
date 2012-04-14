@@ -13,9 +13,9 @@ class Taiga extends Card {
         boolean landCheck = true;
         if (super.tryCast(g)) {
             // Check for any other lands played this turn
-            if (!Game.g.battlefield.isEmpty()) {
-                for (int j = 0; j < Game.g.battlefield.size(); j++) {
-                    if (Game.g.battlefield.get(j).isLand) {
+            if (!Game.staticReferenceToGame.battlefield.isEmpty()) {
+                for (int j = 0; j < Game.staticReferenceToGame.battlefield.size(); j++) {
+                    if (Game.staticReferenceToGame.battlefield.get(j).isLand) {
                         landCheck = false;
                         break;
                     }
@@ -31,7 +31,7 @@ class Taiga extends Card {
                     g.setGreen(g.getGreen() + 1);
                 }
 
-                Game.g.battlefield.add(this);
+                Game.staticReferenceToGame.battlefield.add(this);
             } else {
                 return false;
             }

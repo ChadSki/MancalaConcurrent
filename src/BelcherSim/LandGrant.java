@@ -14,9 +14,9 @@ class LandGrant extends Card {
         boolean landCheck = true;
         if (super.tryCast(g)) {
             // Check for any other lands played this turn
-            if (!Game.g.battlefield.isEmpty()) {
-                for (int j = 0; j < Game.g.battlefield.size(); j++) {
-                    if (Game.g.battlefield.get(j).isLand) {
+            if (!Game.staticReferenceToGame.battlefield.isEmpty()) {
+                for (int j = 0; j < Game.staticReferenceToGame.battlefield.size(); j++) {
+                    if (Game.staticReferenceToGame.battlefield.get(j).isLand) {
                         landCheck = false;
                         break;
                     }
@@ -24,10 +24,10 @@ class LandGrant extends Card {
             }
             // If landcheck is true, make the mana. Otherwise, return.
             if (landCheck) {
-                for (int i = 0; i < Game.g.library.size(); i++) {
-                    if (Game.g.library.get(i).getName() == "Taiga") {
-                        Game.g.battlefield.add(Game.g.library.get(i));
-                        Game.g.library.remove(i);
+                for (int i = 0; i < Game.staticReferenceToGame.library.size(); i++) {
+                    if (Game.staticReferenceToGame.library.get(i).getName() == "Taiga") {
+                        Game.staticReferenceToGame.battlefield.add(Game.staticReferenceToGame.library.get(i));
+                        Game.staticReferenceToGame.library.remove(i);
 
                         if (color == "red") {
                             g.setRed(g.getRed() + 1);
@@ -41,7 +41,7 @@ class LandGrant extends Card {
                 }
             }
 
-            Game.g.graveyard.add(this);
+            Game.staticReferenceToGame.graveyard.add(this);
             return true;
         } else {
             return false;
