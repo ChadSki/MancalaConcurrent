@@ -22,16 +22,16 @@ public class MancalaBoard {
      * the second leftmost, and so on.
      *
      * @param numSlots the number of slots that the beads may reside in
-     * @param ceiling the maximum number of beads that may reside in a slot
+     * @param ceiling  the maximum number of beads that may reside in a board slot
      * @param numBeads the number of beads to distribute
      */
     public MancalaBoard(int numSlots, int ceiling, int numBeads) {
         ArrayList<Integer> board = new ArrayList<Integer>();
-        for (int i=0; i < numSlots; i++) {     // Set up with empty slots
+        for (int i = 0; i < numSlots; i++) {     // Set up with empty slots
             board.add(0);
         }
         int index = 0;
-        for (int i=0; i < numBeads; i++) {     // Fill the slots!
+        for (int i = 0; i < numBeads; i++) {     // Fill the slots!
             if (board.get(index) >= ceiling) { // Spill condition
                 index++;
                 if (index >= numSlots)
@@ -48,14 +48,13 @@ public class MancalaBoard {
      * functionality.  For private use only. The new internal representation
      * is generated within generateNext(), where this constructor is used.
      *
-     * @param board
-     * @param ceiling
+     * @param board   a representation of a state in a mancala sequence
+     * @param ceiling the maximum number of beads that may reside in a board slot
      */
     private MancalaBoard(ArrayList<Integer> board, int ceiling) {
         this.m_ceiling = ceiling;
         m_board = Collections.unmodifiableList(board);
     }
-
 
 
     /**
@@ -109,7 +108,7 @@ public class MancalaBoard {
                 else {
                     int curr = nextBoard.get(pos);
                     if ((curr > m_ceiling) ||
-                        (curr == m_ceiling && lifted > 0)) {
+                            (curr == m_ceiling && lifted > 0)) {
                         /* Position is on the board, but the number of beads
                            will be over the limit if we set down lifted.  Lift
                            the extra beads and spill into the next slot.
@@ -156,8 +155,7 @@ public class MancalaBoard {
      */
     private ArrayList<Integer> copyOfBoard() {
         ArrayList<Integer> newBoard = new ArrayList<Integer>();
-        for (int i=0; i < m_board.size(); i++)
-            newBoard.add(m_board.get(i));
+        for (Integer beadsPerSlot : m_board) newBoard.add(beadsPerSlot);
         return newBoard;
     }
 
