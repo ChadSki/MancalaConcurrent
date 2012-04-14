@@ -1,6 +1,8 @@
 package ProducerConsumer;
 
 /**
+ * TODO javadocs
+ *
  * @author Chad Zawistowski <crz8448@rit.edu>
  */
 public class MancalaConsumer implements Runnable {
@@ -14,7 +16,7 @@ public class MancalaConsumer implements Runnable {
     }
 
     public void run() {
-        while ( !(m_queue.isClosed() && m_queue.isEmpty()) ) {
+        while (!(m_queue.isClosed() && m_queue.isEmpty())) {
             try {
                 BoardEntry entry = m_queue.take();
                 if (entry.getBoard() != null)

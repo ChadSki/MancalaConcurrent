@@ -3,9 +3,9 @@ package ProducerConsumer;
 import MancalaBoard.MancalaBoard;
 
 /**
- * User: Chad
- * Date: 4/11/12
- * Time: 2:11 PM
+ * TODO javadocs
+ *
+ * @author Chad Zawistowski <crz8448@rit.edu>
  */
 public class MancalaProducer implements Runnable {
 

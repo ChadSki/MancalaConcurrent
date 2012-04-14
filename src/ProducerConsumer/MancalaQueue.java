@@ -1,10 +1,10 @@
 package ProducerConsumer;
 
-import ProducerConsumer.BoardEntry;
-
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
+ * TODO javadocs
+ *
  * @author Chad Zawistowski <crz8448@rit.edu>
  */
 public class MancalaQueue extends LinkedBlockingQueue<BoardEntry> {
