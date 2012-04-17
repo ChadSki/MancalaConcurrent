@@ -16,15 +16,17 @@ public class MancalaConsumer implements Runnable {
     }
 
     public void run() {
-        while (!(m_queue.isClosed() && m_queue.isEmpty())) {
+        while (true) {
             try {
                 BoardEntry entry = m_queue.take();
                 if (entry.getBoard() != null)
                     System.out.println(m_name + " took " + Integer.toString(entry.getNumInSequence()));
+                else
+                    break;
             } catch (InterruptedException e) {
                 System.out.println("MancalaConsumer interrupted while waiting on queue: " + e.getMessage());
             }
         }
-        System.out.println("Finished Consuming");
+        System.out.println(m_name + " Finished Consuming");
     }
 }

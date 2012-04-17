@@ -9,19 +9,15 @@ import java.util.concurrent.LinkedBlockingQueue;
  */
 public class MancalaQueue extends LinkedBlockingQueue<BoardEntry> {
 
-    protected boolean queueClosed;
+    protected final int m_numConsumers;
 
-    public MancalaQueue() {
+    public MancalaQueue(int numConsumers) {
         super();
-        queueClosed = false;
+        m_numConsumers = numConsumers;
     }
 
     public void close() {
-        queueClosed = true;
+        for (int i=0; i < m_numConsumers; i++)
+            offer(new BoardEntry(null, 0));
     }
-
-    public boolean isClosed() {
-        return queueClosed;
-    }
-
 }
