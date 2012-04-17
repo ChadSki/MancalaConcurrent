@@ -20,7 +20,7 @@ public class Driver {
     static final int numBeads = 6;
 
     public static void main(String[] args) {
-        MancalaQueue queue = new MancalaQueue();
+        MancalaQueue queue = new MancalaQueue(3);
         ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
         Future<?> producer;
         Future<?> consumerA;
