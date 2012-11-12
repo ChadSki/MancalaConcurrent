@@ -22,14 +22,15 @@ public class Driver {
     public static void main(String[] args) {
         MancalaQueue queue = new MancalaQueue(3);
         ExecutorService executorService = Executors.newFixedThreadPool(threadPoolSize);
-        Future<?> producer;
-        Future<?> consumerA;
-        Future<?> consumerB;
-        Future<?> consumerC;
-        producer = executorService.submit(new MancalaProducer(queue, numSlots, ceiling, numBeads));
-        consumerA = executorService.submit(new MancalaConsumer(queue, "A"));
-        consumerB = executorService.submit(new MancalaConsumer(queue, "B"));
-        consumerC = executorService.submit(new MancalaConsumer(queue, "C"));
+        
+        Future<?> producer = executorService.submit(new MancalaProducer(queue, numSlots, ceiling, numBeads));
+        
+        /* We don't have any worthwhile consumers, so these fellas will simply print their name (A, B, C)
+         * followed by the sequence number they received.
+         */
+        Future<?> consumerA = executorService.submit(new MancalaConsumer(queue, "A"));
+        Future<?> consumerB = executorService.submit(new MancalaConsumer(queue, "B"));
+        Future<?> consumerC = executorService.submit(new MancalaConsumer(queue, "C"));
 
         try {
             // Join on completion
