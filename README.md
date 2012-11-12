@@ -1,5 +1,9 @@
 # MancalaConcurrent
 
-This is a Java implementation of the 'Mancala Sequence', a sequence I developed while trying to express all possible combinations of cards in a Magic: The Gathering deck.  It works given a number of card types to choose from, the number of cards to be picked for the deck, and a cap on how many cards of a specific type may be picked.
+This is a Java implementation of a sequence I developed while working on a Magic: The Gathering simulator.  I was trying to express all possible combinations of cards in an M:TG deck.
 
-This particular project uses the producer / consumer pattern as a way to exercise my concurrent java programming skills.  In the future, I may tie it in with a M:TG simulator to brute-force test deck combinations for effectiveness.
+The name comes from the board game Mancala, where beads are moved between different slots on a board.  The metaphor is applicable, because the algorithm involves moving a constant number of 'beads' between 'slots', which represent the cards.
+
+![image of a mancala board](http://i.imgur.com/hOHGh.png)
+
+This particular project implements the mancala sequence with the producer-consumer pattern.  In theory, one producer could generate M:TG deck combinations for several concurrent deck simulators.
