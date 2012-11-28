@@ -1,6 +1,6 @@
 # MancalaConcurrent
 
-This is a Java implementation of a sequence I developed while working on a Magic: The Gathering simulator.  I was trying to express all possible combinations of cards in an M:TG deck.
+This is a Java implementation of a sequence I developed while working on a Magic: The Gathering simulator.  The intent was to express all possible combinations of cards in an M:TG deck.
 
 The name comes from the board game Mancala, where beads are moved between different slots on a board.  The metaphor is applicable, because the algorithm involves moving a constant number of 'beads', which represents the number of cards in a deck, between 'slots', which represent the available cards.
 
